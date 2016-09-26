@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<title>Canvas Drag and Drop</title>
+
+<style>
+#bank{
+    border: 1px solid #aaa;
+    width: 600px;
+    min-height:60px;
+}
+
+#bank>img{
+    margin: 5px 10px;
+}
+</style>
+
+</head>
+<body>
+<canvas id="canvas" width="600" height="400" style="border: 1px solid #aaa">
+    This text is displayed because your browser doesn't support canvas element.
+</canvas>
+<div id="bank"></div>
+
+<script src="js/lib/jquery-1.11.0.min.js"><!-- load for jQuery --></script>
+<script src="js/lib/jquery-ui-1.10.4.custom.min.js"> <!-- load for jQuery UI --> </script>
+
+<script src="js/canvas_drag_drop.js"></script>
+<script>
+function addObjectToBank(obj){
+    var bankItem = DragDrop.generateDraggableImage(obj);
+    $("#bank").append(bankItem);
+}
+
+$(document).ready(function(){
+    addObjectToBank(new Rectangle(0, 0, 80, 50, "green"));
+    addObjectToBank(new Circle(0, 0, 25, "red"));
+    addObjectToBank(new Rectangle(0, 0, 80, 50, "yellow"));
+    
+    DragDrop.initCanvas("canvas");
+});
+</script>
+</body>
+</html>
