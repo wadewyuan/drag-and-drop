@@ -182,17 +182,17 @@ var DragDrop = (function(){
             
             // loop the array "allObjects" and call the paint method of each item
             for(i in allObjects){
-	            var obj = allObjects[i];
-	            if(context != null && obj instanceof Shape){
-	                drawObject(context, obj);
-	            }
-	        }
-	        
-	        if(selObj != null){
-	           selObj.drawSelection(SELECTION_COLOR, SELECTION_LINE_WIDTH);
-	        }
-	        
-	        refreshEnabled = false;
+                var obj = allObjects[i];
+                if(context != null && obj instanceof Shape){
+                    drawObject(context, obj);
+                }
+            }
+            
+            if(selObj != null){
+               selObj.drawSelection(SELECTION_COLOR, SELECTION_LINE_WIDTH);
+            }
+            
+            refreshEnabled = false;
         }
     }
     // set context to a single object and draw this object 
@@ -318,7 +318,7 @@ var DragDrop = (function(){
         
     	mouseUpForDrag(e);
     }
-	/** private methods -- end **/		
+    /** private methods -- end **/
     
     /** public methods -- start **/
     return {
@@ -349,28 +349,28 @@ var DragDrop = (function(){
             
                 /* create canvas with same size of Shape object */
                 var objCanvas = document.createElement("canvas");
-		        objCanvas.width = size[0];
-		        objCanvas.height = size[1];
-		        
-		        /* draw the Shape object onto the canvas */
-		        obj.setContext(objCanvas.getContext("2d"));
-		        obj.paint();
-		        
-		        /* converto canvas into HTML img and bind the Shape object to the generated img */
-		        var bankItem = jQuery("<img width=" + size[0] + " height=" + size[1] + ">");
-		        bankItem.attr("src", objCanvas.toDataURL("image/png")).data(OBJECT_KEY, obj);
-		        
-		        /* make the img draggable with jQuery */
-		        bankItem.draggable({
-		            helper : "clone",
-		            start : function(e, ui){
-		                var offsetX = e.pageX - $(e.target).offset().left;
-		                var offsetY = e.pageY - $(e.target).offset().top;
-		                setDragOffset(offsetX, offsetY);
-		            }
-		        });
-		        
-		        return bankItem;
+                objCanvas.width = size[0];
+                objCanvas.height = size[1];
+                
+                /* draw the Shape object onto the canvas */
+                obj.setContext(objCanvas.getContext("2d"));
+                obj.paint();
+                
+                /* converto canvas into HTML img and bind the Shape object to the generated img */
+                var bankItem = jQuery("<img width=" + size[0] + " height=" + size[1] + ">");
+                bankItem.attr("src", objCanvas.toDataURL("image/png")).data(OBJECT_KEY, obj);
+                
+                /* make the img draggable with jQuery */
+                bankItem.draggable({
+                    helper : "clone",
+                    start : function(e, ui){
+                        var offsetX = e.pageX - $(e.target).offset().left;
+                        var offsetY = e.pageY - $(e.target).offset().top;
+                        setDragOffset(offsetX, offsetY);
+                    }
+                });
+                
+                return bankItem;
             }
         }
     }
