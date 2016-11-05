@@ -14,13 +14,13 @@ Shape.prototype.setContext = function(ctx){
     }else{
         console.log("Invalid context object");
     }
-}
+};
 /* gets the size of shape, returns array like [width, height] */
 Shape.prototype.getSize = function(){
     return [0, 0];
-}
-Shape.prototype.paint = function(){ /* empty */ }
-Shape.prototype.drawSelection = function(color, lineWidth){ /* empty */ }
+};
+Shape.prototype.paint = function(){ /* empty */ };
+Shape.prototype.drawSelection = function(color, lineWidth){ /* empty */ };
 
 Shape.prototype.clone = function(){    
     var copy = Object.create(Object.getPrototypeOf(this));    
@@ -31,11 +31,11 @@ Shape.prototype.clone = function(){
     }
     
     return copy;
-}
+};
 Shape.prototype.setPosition = function(x, y){
     this.x = x;
     this.y = y;
-}
+};
 
 /**
  * Rectangle class, inherits from Shape
@@ -60,7 +60,7 @@ Rectangle.prototype = new Shape();
 /* override getSize and paint methods for Rectangle */
 Rectangle.prototype.getSize = function(){
     return [this.w, this.h];
-}
+};
 Rectangle.prototype.paint = function(){
     if(this.ctx != null){
         this.ctx.save();
@@ -68,7 +68,7 @@ Rectangle.prototype.paint = function(){
         this.ctx.fillRect(this.x, this.y, this.w, this.h);        
         this.ctx.restore();
     }
-}
+};
 Rectangle.prototype.drawSelection = function(color, lineWidth){
     if(this.ctx != null){
         this.ctx.save();
@@ -77,7 +77,7 @@ Rectangle.prototype.drawSelection = function(color, lineWidth){
         this.ctx.strokeRect(this.x, this.y, this.w, this.h);
         this.ctx.restore();
     }
-}
+};
 
 /**
  * Circle class, inherits from Shape
@@ -100,7 +100,7 @@ Circle.prototype = new Shape();
 /* override getSize and paint methods for Circle */
 Circle.prototype.getSize = function(){
     return [this.r * 2, this.r * 2];
-}
+};
 Circle.prototype.paint = function(){
     if(this.ctx != null){
         
@@ -115,7 +115,7 @@ Circle.prototype.paint = function(){
         this.ctx.fill();        
         this.ctx.restore();
     }
-}
+};
 Circle.prototype.drawSelection = function(color, lineWidth){
     if(this.ctx != null){
         /* calculate the center point coordinate of the Circle */
@@ -130,7 +130,7 @@ Circle.prototype.drawSelection = function(color, lineWidth){
         this.ctx.stroke();
         this.ctx.restore();
     }
-}
+};
 
 
 /**
@@ -165,7 +165,7 @@ var DragDrop = (function(){
         originalPos = {                 // the original position of selected object before dragging
     		x:0,
     		y:0
-    	}
+    	};
     /** private variables -- end **/
     
     /** private methods -- start **/
@@ -373,6 +373,6 @@ var DragDrop = (function(){
                 return bankItem;
             }
         }
-    }
+    };
     /** public methods -- end **/
 })();
