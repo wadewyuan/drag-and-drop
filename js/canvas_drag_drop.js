@@ -356,7 +356,7 @@ var DragDrop = (function(){
                 obj.setContext(objCanvas.getContext("2d"));
                 obj.paint();
                 
-                /* converto canvas into HTML img and bind the Shape object to the generated img */
+                /* convert canvas into HTML img and bind the Shape object to the generated img */
                 var bankItem = jQuery("<img width=" + size[0] + " height=" + size[1] + ">");
                 bankItem.attr("src", objCanvas.toDataURL("image/png")).data(OBJECT_KEY, obj);
                 
